@@ -424,6 +424,34 @@
     }
   }
 
+  // ── SEND FEEDBACK TO BACKEND ──────────────
+  // Sends thumbs up/down to: /chat?feedback=up&session_id=...
+  // "up" for 👍, "down" for 👎 — exactly what the backend expects.
+  // Fire-and-forget: we don't block the UI waiting for a response.
+
+  async function sendFeedback(verdict) {
+    const url =
+      `${CONFIG.apiBase}` +
+      `?feedback=${encodeURIComponent(verdict)}` +
+      `&${CONFIG.sessionParam}=${encodeURIComponent(SESSION_ID)}`;
+
+    try {
+      await fetch(url, {
+        method: "GET",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "ngrok-skip-browser-warning": "true",
+        },
+      });
+      console.log(
+        `[BALCO Feedback] Sent feedback="${verdict}" session=${SESSION_ID}`,
+      );
+    } catch (err) {
+      // Network error — silently ignore, UI already updated
+      console.warn("[BALCO Feedback] Could not send feedback:", err);
+    }
+  }
+
   // ── REACTION HANDLER ──────────────────────
   function bindReactions() {
     document.getElementById("balco-messages").addEventListener("click", (e) => {
@@ -435,19 +463,19 @@
       const downBtn = reactionsEl.querySelector(".down-btn");
       const isUp = btn.classList.contains("up-btn");
 
-      // Toggle off if already selected
+      // Toggle off if already selected — also send the opposite to backend
       if (btn.classList.contains(isUp ? "selected-up" : "selected-down")) {
         btn.classList.remove(isUp ? "selected-up" : "selected-down");
-        return;
+        return; // User un-did their vote — don't send anything
       }
 
       upBtn.classList.remove("selected-up");
       downBtn.classList.remove("selected-down");
       btn.classList.add(isUp ? "selected-up" : "selected-down");
 
-      const msgId = reactionsEl.dataset.id;
-      const verdict = isUp ? "helpful" : "not_helpful";
-      console.log(`[BALCO Feedback] msg=${msgId} verdict=${verdict}`);
+      // "up" for 👍, "down" for 👎 — matches what the backend expects
+      const verdict = isUp ? "up" : "down";
+      sendFeedback(verdict);
     });
   }
 
