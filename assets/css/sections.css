@@ -1,0 +1,93 @@
+/* ── sections.css: specialities, doctors, awards, testimonials, news, partners, footer ── */
+
+/* ── SHARED SECTION WRAPPER ── */
+.section      { padding: 64px 24px; }
+.section-alt  { background: var(--gray-bg); }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-head  { text-align: center; margin-bottom: 44px; }
+.section-head h2 { font-family: 'Sora', sans-serif; font-size: clamp(22px,2.5vw,30px); font-weight: 700; color: var(--dark-blue); margin-bottom: 10px; }
+.section-head p  { color: var(--muted); font-size: 14.5px; max-width: 560px; margin: 0 auto; }
+.section-divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px; }
+.divider-line    { width: 60px; height: 2px; background: var(--green); border-radius: 2px; }
+.divider-dot     { width: 10px; height: 10px; border-radius: 50%; background: var(--green); }
+
+/* ── SEE ALL BUTTON ── */
+.see-all-wrap { text-align: center; margin-top: 38px; }
+.btn-see-all  { display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--blue); font-size: 14px; font-weight: 600; padding: 12px 30px; border-radius: 30px; border: 2px solid var(--blue); transition: all 0.25s; }
+.btn-see-all:hover { background: var(--blue); color: white; }
+
+/* ── SPECIALITIES ── */
+.specialities-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 20px; }
+.spec-card { background: white; border-radius: 16px; padding: 24px 16px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.28s; cursor: pointer; border: 2px solid transparent; }
+.spec-card:hover { border-color: var(--green); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(76,175,80,0.15); }
+.spec-icon { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--green), var(--green-2)); margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; }
+.spec-icon i { font-size: 22px; color: white; }
+.spec-card h4 { font-size: 12.5px; font-weight: 600; color: var(--dark-blue); line-height: 1.4; }
+
+/* ── DOCTORS ── */
+.doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 22px; }
+.doc-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); transition: all 0.28s; cursor: pointer; border: 2px solid transparent; }
+.doc-card:hover { border-color: var(--blue); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(26,58,143,0.14); }
+.doc-photo { height: 200px; background: var(--light); overflow: hidden; }
+.doc-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.35s; }
+.doc-card:hover .doc-photo img { transform: scale(1.05); }
+.doc-info { padding: 14px 14px 10px; }
+.doc-info h3 { font-size: 13.5px; font-weight: 700; color: var(--dark-blue); margin-bottom: 4px; }
+.doc-info span { font-size: 11.5px; color: var(--green-2); font-weight: 500; }
+.doc-btn { display: block; margin: 10px 14px 14px; background: var(--blue); color: white; text-align: center; font-size: 12px; font-weight: 600; padding: 8px; border-radius: 8px; transition: background 0.2s; }
+.doc-btn:hover { background: var(--dark-blue); color: white; }
+
+/* ── AWARDS ── */
+.awards-section { background: linear-gradient(135deg, var(--dark-blue), var(--blue)); padding: 64px 24px; }
+.awards-section .section-head h2 { color: white; }
+.awards-section .section-head p  { color: rgba(255,255,255,0.65); }
+.awards-section .divider-line    { background: rgba(255,255,255,0.4); }
+.awards-section .divider-dot     { background: white; }
+.awards-section .btn-see-all     { border-color: rgba(255,255,255,0.5); color: white; background: rgba(255,255,255,0.1); }
+.awards-section .btn-see-all:hover { background: white; color: var(--blue); border-color: white; }
+.awards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 20px; }
+.award-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; overflow: hidden; backdrop-filter: blur(6px); transition: all 0.28s; }
+.award-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-4px); }
+.award-card img { width: 100%; height: 160px; object-fit: cover; }
+.award-card p   { color: rgba(255,255,255,0.85); font-size: 12.5px; padding: 12px 14px; font-weight: 500; line-height: 1.4; }
+
+/* ── TESTIMONIALS ── */
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 22px; }
+.testi-card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid var(--green); transition: all 0.28s; }
+.testi-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.1); }
+.testi-quote { font-size: 30px; color: var(--green); line-height: 1; margin-bottom: 10px; }
+.testi-card p  { font-size: 13.5px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+.testi-card h4 { font-size: 13px; font-weight: 700; color: var(--dark-blue); }
+
+/* ── NEWS & EVENTS ── */
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 22px; }
+.news-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.28s; cursor: pointer; }
+.news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+.news-card img { width: 100%; height: 160px; object-fit: cover; }
+.news-info { padding: 16px; }
+.news-date { font-size: 11.5px; color: var(--green-2); font-weight: 600; margin-bottom: 6px; }
+.news-info h3 { font-size: 14px; font-weight: 700; color: var(--dark-blue); line-height: 1.4; margin-bottom: 6px; }
+.news-info p  { font-size: 12.5px; color: var(--muted); }
+
+/* ── PARTNERS ── */
+.partners-bar { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; padding: 40px 24px; }
+.partner-logo { height: 48px; width: auto; filter: grayscale(1); opacity: 0.55; transition: all 0.25s; }
+.partner-logo:hover { filter: none; opacity: 1; }
+
+/* ── FOOTER ── */
+footer { background: var(--dark-blue); color: rgba(255,255,255,0.75); }
+.footer-main { max-width: 1200px; margin: 0 auto; padding: 52px 24px 36px; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; }
+.footer-brand img { height: 52px; margin-bottom: 16px; }
+.footer-brand p { font-size: 13px; line-height: 1.7; margin-bottom: 20px; }
+.footer-socials { display: flex; gap: 10px; }
+.footer-socials a { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; transition: background 0.2s; }
+.footer-socials a:hover { background: var(--green); }
+.footer-col h4 { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: white; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid rgba(255,255,255,0.12); }
+.footer-col ul li { margin-bottom: 9px; }
+.footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.65); transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
+.footer-col ul li a:hover { color: var(--green); }
+.footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 13px; }
+.footer-contact-item i { color: var(--green); font-size: 14px; margin-top: 1px; flex-shrink: 0; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 18px 24px; text-align: center; font-size: 12.5px; color: rgba(255,255,255,0.4); }
+.footer-bottom a { color: rgba(255,255,255,0.5); margin: 0 10px; }
+.footer-bottom a:hover { color: white; }

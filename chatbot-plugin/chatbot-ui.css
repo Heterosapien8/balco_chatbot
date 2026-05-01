@@ -1,0 +1,112 @@
+/* ── chatbot-ui.css: typing indicator, quick replies, input bar, footer ── */
+
+/* ── TYPING INDICATOR ── */
+.typing-indicator { display:flex; align-items:flex-end; gap:8px; animation:slideUp 0.3s ease; }
+.typing-bubble { background:#fff; border-radius:14px; border-bottom-left-radius:4px; padding:12px 16px; box-shadow:0 2px 8px rgba(0,0,0,0.06); display:flex; gap:4px; align-items:center; }
+.typing-dot { width:7px; height:7px; border-radius:50%; background:var(--balco-blue); opacity:0.4; animation:typingAnim 1.2s ease-in-out infinite; }
+.typing-dot:nth-child(2) { animation-delay:0.2s; }
+.typing-dot:nth-child(3) { animation-delay:0.4s; }
+@keyframes typingAnim { 0%,100%{opacity:0.4;transform:translateY(0)} 50%{opacity:1;transform:translateY(-4px)} }
+
+/* ── QUICK REPLIES ── */
+.balco-quick-replies { display:flex; flex-wrap:wrap; gap:6px; padding:0 16px 10px; background:var(--balco-gray); }
+.quick-reply-btn { background:white; border:1.5px solid rgba(26,58,143,0.2); color:var(--balco-blue); font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500; padding:6px 12px; border-radius:20px; cursor:pointer; transition:var(--transition); white-space:nowrap; }
+.quick-reply-btn:hover { background:var(--balco-blue); color:white; border-color:var(--balco-blue); transform:translateY(-1px); }
+
+/* ── INPUT AREA ── */
+.balco-input-area { padding:12px 14px 6px; background:white; display:flex; align-items:center; gap:10px; border-top:1px solid rgba(26,58,143,0.08); flex-shrink:0; }
+
+/* ── CHAR COUNTER ROW ── */
+.balco-char-row { padding: 0 16px 8px; background: white; text-align: right; }
+#balco-char-counter {
+  font-family: 'DM Sans', sans-serif; font-size: 11px;
+  color: var(--balco-muted); transition: color 0.2s;
+}
+#balco-char-counter.balco-char-caution { color: #d69e2e; font-weight: 600; }
+#balco-char-counter.balco-char-warn    { color: #e53e3e; font-weight: 700; }
+
+#balco-user-input {
+  flex:1; border:1.5px solid rgba(26,58,143,0.15); border-radius:24px;
+  padding:10px 16px; font-family:'DM Sans',sans-serif; font-size:13.5px;
+  color:var(--balco-text); outline:none; background:var(--balco-gray);
+  transition:var(--transition); resize:none;
+}
+#balco-user-input:focus { border-color:var(--balco-blue); background:white; box-shadow:0 0 0 3px rgba(26,58,143,0.08); }
+#balco-user-input::placeholder { color:var(--balco-muted); }
+
+#balco-send-btn {
+  width:40px; height:40px; border-radius:50%;
+  background:linear-gradient(135deg,var(--balco-blue),#2d59c8);
+  border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:var(--transition); flex-shrink:0;
+  box-shadow:0 4px 12px rgba(26,58,143,0.3);
+}
+#balco-send-btn:hover    { transform:scale(1.08); box-shadow:0 6px 18px rgba(26,58,143,0.4); }
+#balco-send-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+#balco-send-btn svg { width:18px; height:18px; fill:white; }
+
+/* ── FOOTER BRANDING ── */
+.balco-chat-footer { text-align:center; padding:6px; background:white; font-size:10.5px; color:var(--balco-muted); border-top:1px solid rgba(26,58,143,0.06); letter-spacing:0.2px; }
+.balco-chat-footer span { color:var(--balco-blue); font-weight:600; }
+
+/* ── MESSAGE REACTIONS ── */
+.msg-reactions {
+  display: flex; gap: 4px; margin-top: 5px; opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.balco-msg.bot:hover .msg-reactions { opacity: 1; }
+.reaction-btn {
+  background: none; border: 1.5px solid rgba(26,58,143,0.15);
+  border-radius: 12px; padding: 2px 7px; font-size: 12px;
+  cursor: pointer; transition: all 0.2s; color: var(--balco-muted);
+  line-height: 1.6;
+}
+.reaction-btn:hover                  { border-color: var(--balco-blue); background: var(--balco-light); }
+.reaction-btn.selected-up            { background: #e8f5e9; border-color: #4caf50; color: #2d7a31; }
+.reaction-btn.selected-down          { background: #fff5f5; border-color: #e53e3e; color: #c53030; }
+.reaction-btn.selected-up:hover      { background: #e8f5e9; }
+.reaction-btn.selected-down:hover    { background: #fff5f5; }
+/* ── SUGGESTION CHIPS ── */
+/* These appear below a bot reply and act like clickable follow-up questions */
+.balco-suggestion-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 4px 16px 12px;
+  background: var(--balco-gray);
+  animation: slideUp 0.25s ease;
+}
+.suggestion-chip-btn {
+  background: white;
+  border: 1.5px solid rgba(26,58,143,0.25);
+  color: var(--balco-blue);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 13px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  text-align: left;
+  line-height: 1.4;
+}
+.suggestion-chip-btn:hover {
+  background: var(--balco-blue);
+  color: white;
+  border-color: var(--balco-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(26,58,143,0.2);
+}
+
+/* Dark mode: suggestion chips */
+#balco-chat-window.balco-dark .balco-suggestion-chips { background: #16213e; }
+#balco-chat-window.balco-dark .suggestion-chip-btn {
+  background: #0f3460;
+  color: #90cdf4;
+  border-color: #2d59c8;
+}
+#balco-chat-window.balco-dark .suggestion-chip-btn:hover {
+  background: #2d59c8;
+  color: white;
+}

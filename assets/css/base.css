@@ -1,0 +1,132 @@
+/* ── base.css: reset, variables, typography, header, hero, stats ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Sora:wght@600;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; color: #2d3748; background: #fff; overflow-x: hidden; }
+img  { max-width: 100%; display: block; }
+a    { text-decoration: none; color: inherit; }
+ul   { list-style: none; }
+
+:root {
+  --blue:      #1a3a8f;
+  --dark-blue: #0d1f4e;
+  --green:     #4caf50;
+  --green-2:   #3d8b40;
+  --light:     #e8eef8;
+  --gray-bg:   #f5f7fc;
+  --white:     #ffffff;
+  --text:      #2d3748;
+  --muted:     #718096;
+}
+
+/* ── TOP BAR ── */
+.top-bar {
+  background: #0d1f4e;
+  padding: 8px 24px;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.top-bar-marquee {
+  color: #DFFF00;
+  font-size: 12.5px;
+  font-weight: 600;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+}
+@keyframes marquee {
+  from { transform: translateX(60px); }
+  to   { transform: translateX(-100%); }
+}
+
+/* ── HEADER ── */
+header {
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 24px;
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.logos { display: flex; align-items: center; gap: 10px; }
+.logo-main   { height: 54px; width: auto; }
+.logo-badge  { height: 42px; width: auto; }
+
+nav { background: var(--green); border-radius: 8px; padding: 0 4px; display: flex; gap: 2px; flex: 1; }
+nav a { color: white; font-size: 13px; font-weight: 500; padding: 9px 14px; border-radius: 6px; transition: background 0.2s; white-space: nowrap; }
+nav a:hover, nav a.active { background: rgba(255,255,255,0.2); }
+
+.header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.btn-portal {
+  background: var(--blue); color: white; font-size: 12.5px; font-weight: 600;
+  padding: 8px 14px; border-radius: 6px; display: flex; align-items: center; gap: 6px; transition: background 0.2s;
+}
+.btn-portal:hover { background: var(--dark-blue); color: white; }
+.btn-appt {
+  background: #e53e3e; color: white; font-size: 12.5px; font-weight: 600;
+  padding: 8px 14px; border-radius: 6px; display: flex; align-items: center; gap: 6px; transition: background 0.2s;
+}
+.btn-appt:hover { background: #c53030; color: white; }
+.nav-toggle { display: none; background: none; border: none; color: var(--blue); font-size: 22px; cursor: pointer; margin-left: auto; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--dark-blue) 0%, var(--blue) 55%, #2d7a31 100%);
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url('https://www.balcomedicalcentre.com/uploads/slider/home_unit-of-vedanta-medical-research-foundation.jpg') center/cover no-repeat;
+  opacity: 0.18;
+}
+.hero-content { position: relative; z-index: 1; padding: 60px; max-width: 680px; }
+.hero-tag { font-size: 13px; font-weight: 600; color: var(--green); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
+.hero-title { font-family: 'Sora', sans-serif; font-size: clamp(28px,3.5vw,46px); font-weight: 800; color: white; line-height: 1.18; margin-bottom: 20px; }
+.hero-title span { color: var(--green); }
+.hero-desc { font-size: 15px; color: rgba(255,255,255,0.78); line-height: 1.7; margin-bottom: 30px; max-width: 500px; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-btn-primary { background: var(--green); color: white; font-weight: 600; font-size: 14px; padding: 13px 28px; border-radius: 30px; transition: all 0.25s; display: flex; align-items: center; gap: 8px; }
+.hero-btn-primary:hover { background: var(--green-2); color: white; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(76,175,80,0.35); }
+.hero-btn-secondary { background: rgba(255,255,255,0.12); color: white; font-weight: 600; font-size: 14px; padding: 13px 28px; border-radius: 30px; border: 2px solid rgba(255,255,255,0.3); transition: all 0.25s; }
+.hero-btn-secondary:hover { background: rgba(255,255,255,0.22); color: white; transform: translateY(-2px); }
+.hero-badges { position: absolute; bottom: 30px; left: 60px; display: flex; align-items: center; gap: 12px; z-index: 1; }
+.hero-badges p { font-size: 12.5px; color: rgba(255,255,255,0.6); font-weight: 500; }
+.badge-logos { display: flex; gap: 8px; }
+.badge-logo { width: 46px; height: 46px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; padding: 6px; }
+.badge-logo img { width: 100%; height: 100%; object-fit: contain; }
+
+/* ── STATS BAR ── */
+.stats-bar { background: var(--blue); padding: 20px 60px; }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 16px; }
+.stat-item { text-align: center; color: white; }
+.stat-num { font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 800; color: var(--green); }
+.stat-label { font-size: 12.5px; color: rgba(255,255,255,0.72); margin-top: 2px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-content { padding: 50px 24px; }
+  .hero-badges  { left: 24px; }
+  nav { display: none; }
+  .nav-toggle { display: block; }
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+@media (max-width: 600px) {
+  .stats-inner { gap: 24px; }
+  .stat-num    { font-size: 22px; }
+  .footer-main { grid-template-columns: 1fr; }
+  .hero-title  { font-size: 26px; }
+  .header-actions .btn-portal { display: none; }
+}
